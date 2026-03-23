@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+    font-size: 18px;
+    opacity: 0.8;<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,35 +8,160 @@
 
 <style>
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0b0b0b;
-    color: white;
+    margin:0;
+    font-family: Arial;
+    background:#0b0b0b;
+    color:white;
+}
+
+/* NAV */
+.nav {
+    display:flex;
+    justify-content:space-between;
+    padding:15px;
+    background:#111;
+}
+.nav a {
+    color:white;
+    text-decoration:none;
+    margin:0 10px;
 }
 
 /* HERO */
 .hero {
-    height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
-    url('https://images.unsplash.com/photo-1593341646782-e0b495cff86d');
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
+    text-align:center;
+    padding:40px 20px;
 }
 
 .hero h1 {
-    font-size: 36px;
-    color: #ff3b3b;
-    margin-bottom: 10px;
+    color:#ff3b3b;
 }
 
-.hero p {
-    font-size: 18px;
-    opacity: 0.8;
+/* CARD */
+.card {
+    background:#161616;
+    margin:20px;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(255,0,0,0.2);
+    text-align:center;
+}
+
+/* INPUT */
+input {
+    padding:10px;
+    width:80%;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+}
+
+/* BUTTON */
+.btn {
+    display:inline-block;
+    background:#ff3b3b;
+    padding:12px 25px;
+    margin-top:15px;
+    border-radius:25px;
+    text-decoration:none;
+    color:white;
+}
+
+/* SECTIONS */
+.section {
+    display:none;
+}
+.active {
+    display:block;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="nav">
+    <div>🔥 PredictWin</div>
+    <div>
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('winners')">Winners</a>
+        <a href="#" onclick="showPage('rules')">Rules</a>
+    </div>
+</div>
+
+<!-- HOME -->
+<div id="home" class="section active">
+
+<div class="hero">
+    <h1>Predict & Win ₹1000</h1>
+    <p>Aaj ka IPL Contest LIVE</p>
+</div>
+
+<div class="card">
+    <h2>🎯 Aaj ka Sawal</h2>
+    <p>Virat Kohli kitne run banayega?</p>
+
+    <input type="number" id="answer" placeholder="Apna answer likho">
+
+    <br>
+    <button class="btn" onclick="submitAnswer()">Submit Answer</button>
+
+    <br>
+    <a class="btn" href="https://t.me/your_bot_username">Join Telegram</a>
+
+    <p id="msg"></p>
+</div>
+
+</div>
+
+<!-- WINNERS -->
+<div id="winners" class="section">
+
+<div class="card">
+    <h2>🏆 Winners</h2>
+    <p>@cricketking → 46</p>
+    <p>@winner123 → 30</p>
+</div>
+
+</div>
+
+<!-- RULES -->
+<div id="rules" class="section">
+
+<div class="card">
+    <h2>📜 Rules</h2>
+    <p>✔ 1 entry per user</p>
+    <p>✔ closest answer wins</p>
+    <p>✔ no edit allowed</p>
+    <p>✔ tie = earliest</p>
+</div>
+
+</div>
+
+<script>
+function showPage(page){
+    document.querySelectorAll('.section').forEach(el=>el.classList.remove('active'));
+    document.getElementById(page).classList.add('active');
+}
+
+function submitAnswer(){
+    let ans = document.getElementById("answer").value;
+
+    if(ans==""){
+        document.getElementById("msg").innerHTML="❌ Answer daalo pehle";
+        return;
+    }
+
+    document.getElementById("msg").innerHTML="✅ Answer submitted! Telegram join karo";
+
+    setTimeout(()=>{
+        window.location.href="https://t.me/your_bot_username";
+    },1500);
+}
+</script>
+
+</body>
+</html>
 }
 
 /* BUTTON */
