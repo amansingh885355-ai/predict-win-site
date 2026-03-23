@@ -8,101 +8,147 @@
 <style>
 body {
     margin: 0;
-    font-family: Arial;
-    background: #0f0f0f;
+    font-family: Arial, sans-serif;
+    background: #0b0b0b;
     color: white;
-    text-align: center;
 }
 
+/* HERO */
 .hero {
-    padding: 50px 20px;
+    height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
     url('https://images.unsplash.com/photo-1593341646782-e0b495cff86d');
     background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
 }
 
-h1 {
+.hero h1 {
+    font-size: 36px;
     color: #ff3b3b;
-    font-size: 32px;
+    margin-bottom: 10px;
 }
 
-.btn {
-    background: #ff3b3b;
-    color: white;
-    padding: 15px 25px;
-    margin-top: 20px;
-    display: inline-block;
-    text-decoration: none;
-    border-radius: 8px;
+.hero p {
     font-size: 18px;
+    opacity: 0.8;
 }
 
+/* BUTTON */
+.btn {
+    margin-top: 25px;
+    background: #ff3b3b;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ff1f1f;
+    transform: scale(1.05);
+}
+
+/* CARD */
 .section {
-    padding: 30px;
+    padding: 40px 20px;
+    text-align: center;
 }
 
 .card {
-    background: #1c1c1c;
+    background: #161616;
+    margin: 15px auto;
     padding: 20px;
-    margin: 15px;
-    border-radius: 10px;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255,59,59,0.2);
 }
 
+/* TIMER */
+.timer {
+    color: #ff3b3b;
+    font-size: 22px;
+    margin-top: 10px;
+}
 </style>
+
 </head>
 
 <body>
 
+<!-- HERO -->
 <div class="hero">
-    <h1>🔥 Predict & Win ₹1000 Daily</h1>
-    <p>Aaj ka IPL Contest Live hai!</p>
+    <h1>🔥 Predict & Win ₹1000</h1>
+    <p>Aaj ka IPL Contest LIVE hai</p>
 
-    <a class="btn" href="https://t.me/your_bot_username">JOIN NOW ON TELEGRAM</a>
+    <a class="btn" href="https://t.me/your_bot_username">JOIN ON TELEGRAM</a>
+
+    <div class="timer" id="timer">⏳ Loading timer...</div>
 </div>
 
+<!-- QUESTION -->
 <div class="section">
     <div class="card">
         <h2>🎯 Aaj ka Sawal</h2>
         <p>Virat Kohli kitne run banayega?</p>
         <p>🏆 Prize: ₹1000</p>
-        <p>⏳ Last time: Match start hone tak</p>
+        <p>⚠️ Last entry: Match start tak</p>
     </div>
 </div>
 
+<!-- SOCIAL PROOF -->
 <div class="section">
     <div class="card">
-        <h2>⚡ Live Stats</h2>
-        <p>187+ log already join kar chuke hain</p>
-        <p>Entries closing soon!</p>
+        <h2>⚡ Live Activity</h2>
+        <p>🔥 200+ log already join kar chuke hain</p>
+        <p>⏳ Entries closing fast!</p>
     </div>
 </div>
 
+<!-- WINNERS -->
 <div class="section">
     <h2>🏆 Recent Winners</h2>
 
     <div class="card">
-        <p>Match: RCB vs MI</p>
-        <p>Winner: @cricketking</p>
-        <p>Answer: 46</p>
+        <p>@cricketking → Answer: 46</p>
     </div>
 
     <div class="card">
-        <p>Match: CSK vs SRH</p>
-        <p>Winner: @winner123</p>
-        <p>Answer: 30</p>
+        <p>@winner123 → Answer: 30</p>
     </div>
 </div>
 
+<!-- RULES -->
 <div class="section">
-    <h2>📜 Rules</h2>
-
     <div class="card">
-        <p>1 entry per user</p>
-        <p>No edit allowed</p>
-        <p>Closest answer wins</p>
-        <p>Tie = earliest answer wins</p>
+        <h2>📜 Rules</h2>
+        <p>✔ 1 Entry per user</p>
+        <p>✔ Closest answer wins</p>
+        <p>✔ No edit allowed</p>
+        <p>✔ Tie = earliest answer wins</p>
     </div>
 </div>
+
+<script>
+// TIMER (fake urgency)
+let time = 600;
+
+setInterval(() => {
+    let min = Math.floor(time / 60);
+    let sec = time % 60;
+
+    document.getElementById("timer").innerHTML =
+        "⏳ Entries closing in " + min + "m " + sec + "s";
+
+    time--;
+}, 1000);
+</script>
 
 </body>
 </html>
